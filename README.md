@@ -6,7 +6,7 @@ Reachability analysis is an important method in providing safety guarantees for 
 
 ## Overview
 
-This project contains implementations for different approaches to reachability, including *probabilistic guarantees* and *scenario-based methods*.
+This project contains implementations for various approaches to data-driven reachability using *probabilistic guarantees* and *scenario-based methods*.
 
 ## Repository Structure
 
@@ -33,3 +33,11 @@ Reachability_Analysis/
 ├── pyproject.toml
 └── requirements.txt 
 ```
+
+## Installation
+<pre> ``` git clone https://github.com/eadietri/Reachability_Analysis.git 
+          cd Reachability_Analysis 
+          python -m venv venv
+          source venv/bin/activate
+          pip install -e .``` </pre>
+
