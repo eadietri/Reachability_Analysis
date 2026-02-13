@@ -3,6 +3,7 @@ import numpy as np
 from scipy.optimize import minimize, NonlinearConstraint
 from scipy.stats import binom 
 
+# Binomial tail inversion to calculate accuracy level given a test datasest
 def binomial_tail(misses: int, num_samples: int) -> float:
     """
     Compute the largest p such that:

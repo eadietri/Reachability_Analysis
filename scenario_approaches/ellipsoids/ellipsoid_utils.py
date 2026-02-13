@@ -10,6 +10,8 @@ class Ellipsoid:
         self.Q = np.eye(n)
         self.c = np.zeros((n, 1))
         self.r = 1
+        self.A =  np.eye(n)
+        self.b = np.zeros((n, 1))
 
     # Given a dataset of xs and norm degree, fit ellipse to dataset
     # Ellipse in form ||Ax - b|| <= 1
@@ -56,13 +58,13 @@ class Ellipsoid:
         Q /= r
         self.Q = Q
         self.c = c
-        # self.A = A.value
-        # self.b = b.value
+        self.A = A.value
+        self.b = b.value
         self.L = np.linalg.cholesky((self.Q + self.Q.T)/2)
         return problem.value
     
     @staticmethod 
-    def convert_A_b_to_Q_c_r(A, b):
+    def convert_A_b_to_Q_c_r(A: np.ndarray, b: np.ndarray):
         """
         Convert ellipsoid of form ||A x - b|| <= 1
         into standard ellipsoid form: (x - c)^T Q (x - c) <= r
@@ -75,7 +77,7 @@ class Ellipsoid:
         return Q, c, r
 
     @staticmethod
-    def in_ellipsoid(A, b, p):
+    def in_ellipsoid(A: np.ndarray, b: np.ndarray, p):
         """
         Check if point p is in ellipsoid defined by ||A x - b|| <= 1
         Returns True or False
@@ -85,18 +87,15 @@ class Ellipsoid:
         return np.linalg.norm(A @ p - b) - 1 <= 0
     
     @staticmethod
-    def plot_ellipse(Q, c, r, ax, alpha=0.75, color='green', **kwargs):
-        """
-        Plot ellipse defined by (x-c)^T Q (x-c) <= r in 2D
-        """
-        eigvals, eigvecs = np.linalg.eigh(Q)
-        theta = np.linspace(0, 2 * np.pi, 200)
-        circle = np.stack([np.cos(theta), np.sin(theta)])
-        # Scale the ellipse by sqrt(r)
-        ellipse = eigvecs @ np.diag(np.sqrt(r) / np.sqrt(eigvals)) @ circle
-        ellipse = ellipse.T + c
-        ax.plot(ellipse[:, 0], ellipse[:, 1], **kwargs, color=color, alpha=alpha)
+    def ellipsoid_volume(A: np.ndarray, b: np.ndarray) -> float:
+        Q = A.T @ A
+        Q_inv = inv(Q)
+        c = Q_inv @ A.T @ b
+        r = b.T @ A @ Q_inv @ A.T @ b - b.T @ b + 1
 
-        return ax
+        n = A.shape[1]  # dimensionality of the ellipsoid
+
+        volume = (np.pi ** (n / 2)) / gamma(n / 2 + 1) * (r ** (n / 2)) / np.sqrt(det(Q))
+        return volume
     
 
