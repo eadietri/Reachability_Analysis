@@ -35,9 +35,9 @@ Reachability_Analysis/
 ```
 
 ## Installation
-<pre> ``` git clone https://github.com/eadietri/Reachability_Analysis.git 
+<pre>  git clone https://github.com/eadietri/Reachability_Analysis.git 
           cd Reachability_Analysis 
           python -m venv venv
           source venv/bin/activate
-          pip install -e .``` </pre>
+          pip install -e  </pre>
 
