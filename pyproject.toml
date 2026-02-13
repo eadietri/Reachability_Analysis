@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reachability-analysis"
+version = "0.1.0"
+description = "Tools for data-driven reachability analysis."
+readme = "README.md"
+authors = [
+    { name="Elizabeth Dietrich", email="eadietri@berkeley.edu" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib"
+]
+
+[project.urls]
+Homepage = "https://github.com/eadietri/Reachability_Analysis"
+Repository = "https://github.com/eadietri/Reachability_Analysis"
+
+[tool.setuptools.packages.find]
+where = ["src"]
