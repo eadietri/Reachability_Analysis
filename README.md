@@ -7,3 +7,29 @@ Reachability analysis is an important method in providing safety guarantees for 
 ## Overview
 
 This project contains implementations for different approaches to reachability, including *probabilistic guarantees* and *scenario-based methods*.
+
+## Repository Structure
+
+```
+Reachability_Analysis/
+│
+├── src/
+│   └── reachability_analysis/
+│       ├── __init__.py
+│       ├── probabilistic_guarantees/
+│       │   ├── __init__.py
+│       │   └── binomial_utils.py # Calculate binomial tail inversion to get bound for Holdout Method.
+│       ├── scenario_approaches/
+│       │   ├── ellipsoids/
+│       │       └── __init__.py
+|       |       └── ellipsoid_binomial.py # Calculates epsilon for ellipsoidal reachable set/tube using binomial tail inversion. 
+|       |       └── ellipsoid_utils.py # Approximate reachability problem using ellipsoids.
+|       |       └── plotting_utils.py # Plot ellipsoids for visualization purposes.
+|       |   ├── zonotopes/
+|       |       └── __init__.py
+|       |       └── zonotope_utils.py # Approximate reachability problem using zonotopes.
+│
+├── README.md
+├── pyproject.toml
+└── requirements.txt 
+```
