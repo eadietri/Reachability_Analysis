@@ -28,6 +28,7 @@ Reachability_Analysis/
 |       |   ├── zonotopes/
 |       |       └── __init__.py
 |       |       └── zonotope_utils.py # Approximate reachability problem using zonotopes.
+|       |       └── plotting_utils.py # Plot zonotopes for visualization purposes.
 │
 ├── README.md
 ├── pyproject.toml
